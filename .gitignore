@@ -2,3 +2,9 @@ env/
 project/__pycache__/
 project/tests/__pycache__/
 tests/__pycache__/
+
+env
+*.pyc
+*.DS_Store
+__pycache__
+test.db
