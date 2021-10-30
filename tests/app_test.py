@@ -2,6 +2,8 @@ import pytest
 import os
 import json
 from pathlib import Path
+
+from werkzeug.wrappers import response
 from project.app import app, db
 
 TEST_DB = "test.db"
@@ -80,3 +82,24 @@ def test_delete_message(client):
     rv = client.get('/delete/1')
     data = json.loads(rv.data)
     assert data["status"] == 1
+
+def test_search(client):
+    login(client, app.config["USERNAME"], app.config["PASSWORD"])
+    rv1 = client.post(
+        "/add",
+        data=dict(title="<Test entry for search>", text="abcdefg"),
+        follow_redirects=True,
+    )
+    rv2 = client.post(
+        "/add",
+        data=dict(title="<Search test 2>", text="cba"),
+        follow_redirects=True,
+    )
+
+    response1 = client.get("/search/?query=abc", follow_redirects=True)
+    response2 = client.get("/search/?query=test 2", follow_redirects=True)
+
+    assert b"abcdefg" in response1.data
+    assert b"test 2" not in response1.data
+    assert b"test 2" in response2.data
+    assert b"abcdefg" not in response2.data
