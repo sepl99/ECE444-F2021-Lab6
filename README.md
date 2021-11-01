@@ -1,3 +1,9 @@
 # ECE444-F2021-Lab6
 
 this repo follows the tutorial in: https://github.com/mjhea0/flaskr-tdd
+
+**What are the Pros and Cons of Test Driven Development?**
+
+Test Driven Development (TDD) has a number of different advantages and reasons for why taking this approach to development can be beneficial to programmers. For starters, the tests are often relatively small, and having a large amount of these can help encourage more organized codebases. The series of short tests help promote modularity in one’s code, and encourage better and more organized architectures. Having a broad set of tests and a summary of how much, and which tests are passing can also serve as a metric, and can measure progress. Additionally, it can help with collaboration as team members can easily see if changes that they make cause unexpected behavior or failed tests. Finally, if code written has been supported and accompanied by sets of good tests, it can make a programmer’s job easier when it comes to refactoring.
+
+In addition to the pros, there are also some disadvantages that come with taking this approach to development. Firstly, it can slow down the initial speed of development when implementing a new feature for example. If writing a variety of test cases is required first it may take longer before you are able to actually have the feature implemented. It can also be difficult to write tests before code has been implemented. Since many of the implementation details have not been sorted out at the time of writing tests, sometimes it can be difficult to write effective tests beforehand outside of unit tests. Another con could be that developers may always prioritize just writing code that is able to pass all of the different test cases, and they lose focus on things like creating well designed systems, being mindful of potential bugs/unexpected behaviour that can result from just aiming to pass a test etc.
