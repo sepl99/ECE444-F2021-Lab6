@@ -44,8 +44,11 @@ def test_database(client):
     """initial test. ensure that the database exists"""
     tester = Path("test.db").is_file()
     assert tester
+
+
 # def test_database():
 #     assert Path("flaskr.db").is_file()
+
 
 def test_empty_db(client):
     """Ensure database is blank"""
@@ -77,6 +80,7 @@ def test_messages(client):
     assert b"&lt;Hello&gt;" in rv.data
     assert b"<strong>HTML</strong> allowed here" in rv.data
 
+
 def test_delete_message(client):
     """Ensure the messages are being deleted"""
     rv = client.get("/delete/1")
@@ -86,6 +90,7 @@ def test_delete_message(client):
     rv = client.get("/delete/1")
     data = json.loads(rv.data)
     assert data["status"] == 1
+
 
 def test_search(client):
     login(client, app.config["USERNAME"], app.config["PASSWORD"])
